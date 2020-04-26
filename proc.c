@@ -50,7 +50,6 @@ allocproc(void)
 found:
   p->state = EMBRYO;
   p->pid = nextpid++;
-  p->tickets=20;
   release(&ptable.lock);
 
   // Allocate kernel stack.
@@ -166,8 +165,7 @@ fork(void)
   acquire(&ptable.lock);
   np->state = RUNNABLE;
   release(&ptable.lock);
-  
-  np->tickets = 20; 
+   
   return pid;
 }
 

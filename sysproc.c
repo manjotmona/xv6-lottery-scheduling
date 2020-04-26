@@ -99,10 +99,13 @@ sys_gettime(void) {
   return 0;
 }
 
-int sys_settickets(void) {
+int
+sys_settickets(void) {
   int n;
-  if(argint(0,&n) <0) 
-    return -1;
-  proc->tickets =n;
-    return 0;
- }
+  if(argint(0, &n) < 0) {
+    proc->tickets = 20;
+  } else {
+    proc->tickets = n;
+  }
+  return 0;
+}
